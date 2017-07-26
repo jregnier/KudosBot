@@ -1,0 +1,73 @@
+{
+  "key": "kudos-bot",
+  "name": "Kudos Bot",
+  "description": "Kudos bot",
+  "vendor": {
+    "name": "Angry Nerds",
+    "url": "https://www.hipchat.com"
+  },
+  "links": {
+    "self": "{{localBaseUrl}}/atlassian-connect.json",
+    "homepage": "{{localBaseUrl}}"
+  },
+  "capabilities": {
+    "hipchatApiConsumer": {
+      "scopes": [
+        "send_notification",
+        "view_room"
+      ],
+      "avatar": {
+        "url": "{{localBaseUrl}}/img/kudoslogo_sm.jpg",
+        "url@2x": "{{localBaseUrl}}/img/kudoslogo_sm.jpg"
+      }
+    },
+    "installable": {
+      "callbackUrl": "{{localBaseUrl}}/installable"
+    },
+    "configurable": {
+      "url": "{{localBaseUrl}}/config"
+    },
+    "webhook": [
+      {
+        "url": "{{localBaseUrl}}/webhook",
+        "pattern": "^/kudos",
+        "event": "room_message",
+        "name": "Hello!",
+        "authentication": "jwt"
+      }
+    ],
+    "dialog": [
+      {
+        "key": "sample.dialog",
+        "title": {
+          "value": "Roulette!"
+        },
+        "url": "{{localBaseUrl}}/dialog",
+        "options": {
+          "style": "normal",
+          "primaryAction": {
+            "name": {
+              "value": "Roulette!"
+            },
+            "key": "sample.dialog.action",
+            "enabled": true
+          },
+          "size": {
+            "width": "500px",
+            "height": "500px"
+          }
+        }
+      }
+    ],
+    "action": [
+      {
+        "key": "sample.action",
+        "name": {
+          "value": "Roulette!"
+        },
+        "target": "sample.dialog",
+        "location": "hipchat.input.action"
+      }
+    ]
+  }
+}

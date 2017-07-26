@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{name}}</title>
+    <link rel="shortcut icon" type="image/png" href="http://abotars.hipch.at/bot/{{key}}.png">
+    <link rel="stylesheet" href="//aui-cdn.atlassian.com/aui-adg/5.9.6/css/aui.min.css" media="all">
+    <link rel="stylesheet" href="{{furl '/css/homepage.css'}}">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="//aui-cdn.atlassian.com/aui-adg/5.9.6/js/aui.min.js"></script>
+    <script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
+    <script src="https://code.createjs.com/tweenjs-0.6.2.min.js"></script>
+    <script src="/js/Winwheel.js"></script>
+    <script src="/js/greensock-js/TweenMax.min.js"></script>
+</head>
+
+<body>
+    <div id="rouletteContainer">
+        <canvas id="rouletteCanvas" width="400" height="400">
+            canvas not supported!
+        </canvas>
+        <button type="button" onclick="spinWheel()">Spin</button>
+        <script>
+            var theWheel = new Winwheel({
+                'canvasId': 'rouletteCanvas',
+                'numSegments': 8,         // Number of segments
+                'outerRadius': 150,       // The size of the wheel.
+                'centerX': 200,       // Used to position on the background correctly.
+                'centerY': 200,
+                'textFontSize': 15,        // Font size.
+                'segments':            // Definition of all the segments.
+                [
+                    { 'fillStyle': '#eae56f', 'text': 'Prize 1' },
+                    { 'fillStyle': '#89f26e', 'text': 'Prize 2' },
+                    { 'fillStyle': '#7de6ef', 'text': 'Prize 3' },
+                    { 'fillStyle': '#e7706f', 'text': 'Prize 4' },
+                    { 'fillStyle': '#eae56f', 'text': 'Prize 5' },
+                    { 'fillStyle': '#89f26e', 'text': 'Prize 6' },
+                    { 'fillStyle': '#7de6ef', 'text': 'Prize 7' },
+                    { 'fillStyle': '#e7706f', 'text': 'Prize 8' }
+                ],
+                'animation':               // Definition of the animation
+                {
+                    'type': 'spinToStop',
+                    'duration': 5,
+                    'spins': 8,
+                    'callbackFinished': 'alertPrize()'
+                }
+            });
+
+            var isSpinning = false;
+
+            function spinWheel() {
+                if (isSpinning == false) {
+                    theWheel.startAnimation();
+                    isSpinning = true;
+                }
+            }
+
+            function alertPrize() {
+                alert('winner');
+            }
+        </script>
+    </div>
+</body>
+
+</html>

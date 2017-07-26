@@ -1,0 +1,46 @@
+/* add-on styles */
+
+/* Styles for the sidebar to support the single page content approach. */
+.content-target {
+  display: none;
+  position: absolute;
+  top: 0;
+}
+.aui-connect-content,
+:target ~ .aui-connect-content,
+:target ~ .aui-connect-content:last-child {
+  display: none;
+}
+:target + .aui-connect-content,
+:target + .aui-connect-content:last-child {
+  display: block;
+}
+.aui-connect-content:last-child {
+  display: block;
+}
+
+#rouletteContainer {
+    width: 400px;
+    height:400px;
+    margin: 0px auto;
+    border: 0px solid red;
+}
+
+#canvasContainer {
+  background-image: url(/img/basic_wheel_background.png);
+  background-repeat: no-repeat;   /* Ensure that background does not repeat */
+  background-position: center;    /* Ensure image is centred */
+  width: 400px;                   /* Width and height should at least be the same as the canvas */
+  height: 400px;
+}
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
